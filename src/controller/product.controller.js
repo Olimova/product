@@ -14,13 +14,13 @@ export const productController = {
   },
   update:async (req, res, next) => {
     try {
-      const updatedCategory = await Product.findByIdAndUpdate(
+      const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true, runValidators: true }
     );
 
-    if (!updatedCategory) {
+    if (!updatedProduct) {
       return res.status(404).send({
         status: "error",
         message: "Product not found",
@@ -29,7 +29,7 @@ export const productController = {
 
     res.status(200).send({
       status: "ok",
-      data: updatedCategory,
+      data: updatedProduct,
     });
     } catch (err) {
       next(err);

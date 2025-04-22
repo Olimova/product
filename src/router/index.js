@@ -7,4 +7,6 @@ export const appRouter = Router();
 appRouter.use("/auth", authRouter);
 appRouter.use("/category", categoryRouter);
 appRouter.use("/product", productRouter);
-// appRouter.use(userRouter);
+// appRouter.use(userRouter);\\
+
+export default { appRouter };

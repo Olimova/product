@@ -45,6 +45,31 @@ export const orderController = {
       next(err);
     }
   },
+
+  update: async (req, res, next) => {
+    try {
+      const updatedCategory = await User.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true, runValidators: true }
+      );
+
+      if (!updatedCategory) {
+        return res.status(404).send({
+          status: "error",
+          message: "User not found",
+        });
+      }
+
+      res.status(200).send({
+        status: "ok",
+        data: updatedCategory,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+
   delete: async (req, res, next) => {
     try {
       const deletedCategory = await Order.findByIdAndDelete(req.params.id);
